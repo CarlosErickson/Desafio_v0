@@ -6,42 +6,50 @@ using System.Text;
 
 namespace TestDesafioAPI_v0
 {
-    class PessoaServiceMock : IPessoaService
+    public class PessoaServiceMock : IPessoaService
     {
-        List<Pessoa> _pessoas;
+        List<Pessoa> pessoas;
         public PessoaServiceMock()
         {
-            _pessoas = new List<Pessoa>();
+            pessoas = new List<Pessoa>()
+                            {
+                new Pessoa(){Id=1, Nome="Joao",
+                    Sobrenome="Freire", Email="Joao@email.com"},
+                new Pessoa(){Id=2, Nome="Mario",
+                    Sobrenome="Quintana", Email="MarioQ@email.com"},
+                new Pessoa(){Id=3, Nome="Arnaldo",
+                    Sobrenome="Ferreira", Email="ArnaldoF@email.com"}
+
+            };
         }
 
         public void AddPessoa(Pessoa item)
         {
-            _pessoas.Add(item);
+            pessoas.Add(item);
         }
 
         public void DeletePessoa(int id)
         {
-            _pessoas.Remove(_pessoas[id-1]);
+            pessoas.Remove(pessoas[id-1]);
         }
 
         public Pessoa GetPessoa(int id)
         {
-            return _pessoas[id-1];
+            return pessoas[id-1];
         }
 
         public List<Pessoa> GetPessoas()
         {
-            return _pessoas;
+            return pessoas;
         }
 
         public bool PessoaExists(int id)
         {
-            if (_pessoas[id-1]!=null)
+            if (pessoas[id-1]!=null)
             {
                 return true;
             }
             return false;
-            return true;
         }
 
         public void UpdatePessoa(Pessoa item)

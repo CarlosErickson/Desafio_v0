@@ -67,7 +67,6 @@ namespace Desafio_v0.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Route("")]
         public ActionResult Delete(int id)
         {
             bool item_exists = _service.PessoaExists(id);
